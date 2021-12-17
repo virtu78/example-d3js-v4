@@ -68,7 +68,17 @@ module.exports = [
         // We be in JavaScript land here, baby! No <style> tags for us!
         {
           test: /\.css$/,
-          loader: 'style-loader!css-loader',
+          use:[
+            "style-loader",         
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: true,
+              },
+            },
+           ]
+         // loader: 'style-loader!css-loader',
         },
       ],
     },
